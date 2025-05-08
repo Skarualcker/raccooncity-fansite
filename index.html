@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raccoon City Survivors | Fan Site</title>
+    <title>Raccoon City  | Fan Site</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -80,6 +80,20 @@
     </style>
 </head>
 <body class="bg-black text-gray-200">
+    <body class="bg-black text-gray-200">
+    <!-- Elemento de áudio oculto -->
+    <audio id="bg-music" autoplay loop hidden>
+        <source src="audio/bgm.mp3" type="audio/mpeg">
+        Seu navegador não suporta áudio HTML5.
+    </audio>
+
+<!-- Conteúdo depois do áudio -->
+<main>
+    <button onclick="document.getElementById('bg-music').play()">Ativar Som</button>
+    <button onclick="document.getElementById('bg-music').pause()">Desativar Som</button>
+</main>
+
+    
     <!-- Header with Navigation -->
     <header class="sticky top-0 z-50 bg-black border-b border-gray-800 shadow-lg">
         <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center">
@@ -99,12 +113,23 @@
 
     <!-- Hero Section -->
     <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
-        <img src="https://i.imgur.com/JXZQZ9j.jpg" alt="Raccoon City in ruins" class="absolute inset-0 w-full h-full object-cover opacity-70">
+        <img src="https://static.wixstatic.com/media/34209d_6296980d948b47e6bdcb13eca5728011~mv2.jpg/v1/fill/w_1425,h_604,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/34209d_6296980d948b47e6bdcb13eca5728011~mv2.jpg" alt="Raccoon City in ruins" class="absolute inset-0 w-full h-full object-cover opacity-70">
         <div class="hero-overlay absolute inset-0"></div>
         <div class="relative z-10 container mx-auto px-4 text-center">
-            <h2 class="typewriter text-3xl md:text-5xl font-bold mb-6 blood-text">BEM-VINDO A RACCOON CITY</h2>
+            <h2 class="typewriter text-3xl md:text-5xl font-bold mb-6 blood-text">BEM-VINDO A RACCOON CITY OPEN WORLD </h2>
             <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8">
-                Um site feito por fãs para fãs da franquia Resident Evil, focando no terrível incidente que destruiu Raccoon City em 1998. Explore a história, os personagens e baixe conteúdo exclusivo.
+                Um projeto feito por fãs, para fãs, inspirado no universo sombrio e envolvente da icônica franquia Resident Evil. Se você, como nós, sempre sonhou em explorar cada rua, beco e prédio dessa cidade marcada pelo terror da Umbrella Corporation, prepare-se: esse sonho está prestes a se tornar realidade.
+
+Graças ao talento e dedicação de Robin, criador do canal RBS Maquetes Eletrônicas, você poderá vivenciar Raccoon City 24 horas antes do surto do T-Vírus, em um jogo de mundo aberto único, imersivo e cheio de tensão.
+
+Nesta recriação detalhada e fiel, os jogadores poderão mergulhar na atmosfera decadente da cidade, descobrir segredos ocultos, desvendar conspirações e enfrentar os primeiros sinais do horror que está por vir.
+
+Para que esse projeto se torne ainda mais incrível, Robin está em busca de programadores e animadores voluntários, apaixonados por Resident Evil e dispostos a contribuir com seu talento.
+
+Se você tem habilidades em programação, modelagem ou animação 3D e quer participar de um projeto feito com carinho para os fãs da série, essa é a sua chance!
+
+Junte-se a nós na missão de recriar Raccoon City como nunca antes.
+Entre em contato com Robin pelo canal RBS Maquetes Eletrônicas e venha fazer parte desta jornada épica.
             </p>
             <button onclick="playZombieSound()" class="bg-red-900 hover:bg-red-800 text-white px-6 py-3 rounded-md font-bold transition duration-300">
                 ENTRAR NA ZONA DE INFECÇÃO
@@ -260,7 +285,7 @@
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-4 md:mb-0">
-                    <p class="text-sm text-gray-400">© 2023 RACCOON CITY SURVIVORS - UM SITE NÃO OFICIAL FEITO POR FÃS</p>
+                    <p class="text-sm text-gray-400">© RACCOON CITY - UM SITE NÃO OFICIAL FEITO POR FÃS</p>
                     <p class="text-xs text-gray-500 mt-1">Resident Evil é uma marca registrada da Capcom. Este site não tem afiliação oficial.</p>
                 </div>
                 <div class="flex space-x-4">
