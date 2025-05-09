@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raccoon City  | Fan Site</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+        
+        body {
+            font-family: 'Special Elite', cursive;
+            background-color: #0a0a0a;
+            color: #e5e5e5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .umbrella-logo {
+            filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.7));
+        }
+        
+        .blood-text {
+            color: #8b0000;
+            text-shadow: 0 0 3px rgba(255, 0, 0, 0.5);
+        }
+        
+        .character-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+        }
+        
+        .download-btn:hover {
+            background-color: #8b0000 !important;
+        }
+        
+        .nav-link:hover {
+            color: #8b0000 !important;
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(10,10,10,0.9));
+        }
+        
+        .zombie-noise {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .zombie-noise:hover {
+            transform: scale(1.1);
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid #8b0000;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: 
+                typing 3.5s steps(40, end),
+                blink-caret .75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #8b0000 }
+        }
+    </style>
+    <title>Obrigado pelo Contato</title>
+</head>
+<body>
+
+    <header>
+        <div class="interface">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Logo Gabriel Piaia">
+                </a>
+            </div><!--logo-->
+        </div><!--interface-->
+    </header>
+
+    <main>
+        <section class="formulario">
+            <div class="interface">
+                <h2 class="titulo">Obrigado pelo Contato!</h2>
+                <p>Em breve retornarei.</p>
+                <div class="btn-contato2">
+                    <a href="index.html">
+                        <button>Voltar para Início</button>
+                    </a>
+                </div><!--btn-contato-->
+            </div><!--interface-->
+        </section><!--formulario-->
+    </main>
+
+    <footer>
+        <div class="interface">
+            <div class="line-footer">
+                <div class="flex">
+              <!--      <div class="logo-footer">
+                        <img src="images/logo2.png" alt="Logotipo Gabriel Piaia">
+                    </div>-->
+                    <div class="btn-social">
+                        <a href="https://github.com/gabrielpiaia?tab=repositories" target="_blank"><button><i class="bi bi-github"></i></button></a>
+                        <a href="https://www.linkedin.com/in/gabriel-p-837162187/" target="_blank"><button><i class="bi bi-linkedin"></i></button></a>
+                        <a href="https://hub.docker.com/repositories/g4br13lfp" target="_blank"><button><i class="bi bi-box"></i></button></a>
+                    </div><!--btn-social-->
+                </div>
+            </div><!--line-footer-->
+
+            <div class="line-footer borda">
+                <p><i class="bi bi-envelope-fill"></i> <a href="mailto:gabrielpiaia95@gmail.com">gabrielpiaia95@gmail.com</a></p>
+            </div><!--line-footer-->
+        </div><!--interface-->
+    </footer>
+
+</body>
+</html>
