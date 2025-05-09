@@ -47,7 +47,7 @@
         .zombie-noise {
             position: fixed;
             bottom: 20px;
-            right: 20px;
+            left: 20px;
             z-index: 100;
             cursor: pointer;
             transition: all 0.3s;
@@ -79,27 +79,14 @@
         }
     </style>
 </head>
-<body class="bg-black text-gray-200">
+
     <body class="bg-black text-gray-200">
-    <!-- Elemento de áudio oculto -->
-    <audio id="bg-music" autoplay loop hidden>
-        <source src="audio/bgm.mp3" type="audio/mpeg">
-        Seu navegador não suporta áudio HTML5.
-    </audio>
-
-<!-- Conteúdo depois do áudio -->
-<main>
-    <button onclick="document.getElementById('bg-music').play()">Ativar Som</button>
-    <button onclick="document.getElementById('bg-music').pause()">Desativar Som</button>
-</main>
-
-    
     <!-- Header with Navigation -->
     <header class="sticky top-0 z-50 bg-black border-b border-gray-800 shadow-lg">
         <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center">
             <div class="flex items-center mb-4 md:mb-0">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Umbrella_Corporation_logo.svg/1200px-Umbrella_Corporation_logo.svg.png" alt="Umbrella Corporation Logo" class="umbrella-logo h-10 mr-3">
-                <h1 class="text-2xl md:text-3xl font-bold blood-text">RACCOON CITY</h1>
+                <img src="images/logo.png" alt="Umbrella Corporation Logo" class="umbrella-logo h-10 mr-3">
+                <h1 class="text-2xl md:text-3xl font-bold blood-text">RACCOON CITY OPEN WORLD</h1>
             </div>
             <nav class="flex space-x-1 md:space-x-6">
                 <a href="#home" class="nav-link px-3 py-2 text-sm md:text-base hover:text-red-700 transition duration-300">INÍCIO</a>
@@ -111,14 +98,52 @@
         </div>
     </header>
 
+    <!-- Música de fundo -->
+<audio id="bg-music" loop hidden>
+    <source src="audio/bgm.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio HTML5.
+  </audio>
+  
+<!-- Botão para ativar a música -->
+<div class="fixed bottom-4 right-4 z-50 flex gap-2">
+    <button id="toggle-sound" aria-label="Ativar música de fundo"
+      class="bg-red-900 hover:bg-red-700 text-white px-4 py-2 rounded shadow-lg font-bold">
+      Ligar som
+    </button>
+  </div>
+  
+  <!-- Logo com alt para SEO -->
+  <img src="images/banner.jpg" alt="Logo da Umbrella Corporation" class="mx-auto mt-0" />
+  
+  <!-- Script para controlar a música -->
+  <script>
+    const audio = document.getElementById('bg-music');
+    const toggleButton = document.getElementById('toggle-sound');
+    let isPlaying = false;
+  
+    toggleButton.addEventListener('click', () => {
+      if (isPlaying) {
+        audio.pause();
+        toggleButton.textContent = 'Ligar som';
+      } else {
+        audio.play().then(() => {
+          toggleButton.textContent = 'Desligar som';
+        }).catch(err => {
+          console.log('Erro ao tentar tocar áudio:', err);
+        });
+      }
+      isPlaying = !isPlaying;
+    });
+  </script>
+
     <!-- Hero Section -->
     <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
-        <img src="https://static.wixstatic.com/media/34209d_6296980d948b47e6bdcb13eca5728011~mv2.jpg/v1/fill/w_1425,h_604,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/34209d_6296980d948b47e6bdcb13eca5728011~mv2.jpg" alt="Raccoon City in ruins" class="absolute inset-0 w-full h-full object-cover opacity-70">
+        <img src="images/fundo.png" alt="Raccoon City in ruins" class="absolute inset-0 w-full h-full object-cover opacity-70">
         <div class="hero-overlay absolute inset-0"></div>
         <div class="relative z-10 container mx-auto px-4 text-center">
             <h2 class="typewriter text-3xl md:text-5xl font-bold mb-6 blood-text">BEM-VINDO A RACCOON CITY OPEN WORLD </h2>
             <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8">
-                Um projeto feito por fãs, para fãs, inspirado no universo sombrio e envolvente da icônica franquia Resident Evil. Se você, como nós, sempre sonhou em explorar cada rua, beco e prédio dessa cidade marcada pelo terror da Umbrella Corporation, prepare-se: esse sonho está prestes a se tornar realidade.
+                Um projeto feito de fã, para fãs, inspirado no universo sombrio e envolvente da icônica franquia Resident Evil. Se você, como nós, sempre sonhou em explorar cada rua, beco e prédio dessa cidade marcada pelo terror da Umbrella Corporation, prepare-se: esse sonho está prestes a se tornar realidade.
 
 Graças ao talento e dedicação de Robin, criador do canal RBS Maquetes Eletrônicas, você poderá vivenciar Raccoon City 24 horas antes do surto do T-Vírus, em um jogo de mundo aberto único, imersivo e cheio de tensão.
 
@@ -144,17 +169,15 @@ Entre em contato com Robin pelo canal RBS Maquetes Eletrônicas e venha fazer pa
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div>
                     <p class="mb-4">
-                        Em setembro de 1998, a pacata Raccoon City foi transformada em um pesadelo quando o vírus-T, desenvolvido secretamente pela Umbrella Corporation, escapou do laboratório subterrâneo e infectou a população.
+                        Me chamo Robin e trabalho com arquitetura e engenharia na parte de projetos e level design. Trabalhei em Resident Evil 3 Remake Fangame; Em algumas modelagens para o filme the Keeppers Diary do diretor ( Andrew Saullo) juntamente com Charlie Kraslavsky ( Chris Redfield em resident evil 1 clássico). E estou produzindo agora um passeio virtual por toda a Raccoon city e também um jogo em mundo aberto na  cidade de Raccoon city.
                     </p>
                     <p class="mb-4">
-                        O que começou como casos isolados de canibalismo rapidamente se tornou um surto em massa, transformando os cidadãos em zumbis famintos por carne humana. As autoridades locais tentaram conter a situação, mas logo perderam o controle.
+                        Estamos desenvolvendo uma experiência virtual inspirada no Resident Evil, ambientada na icônica cidade de Raccoon City. Diferente de um jogo tradicional, o projeto será um passeio virtual, onde os fãs poderão explorar de forma imersiva diversos locais clássicos e memoráveis da franquia. Entre esses locais, estarão incluídos a famosa Mansão Spencer, o Desert Trail Motel com seu posto de gasolina, a delegacia de polícia R.P.D., a imponente Clock Tower, o hospital da cidade, o parque municipal e a zona industrial. A ideia é proporcionar aos fãs a oportunidade de caminhar por esses cenários como se realmente estivessem dentro do universo de Resident Evil, revivendo a atmosfera sombria e envolvente que marcou a história da série.
                     </p>
-                    <p class="mb-4">
-                        Em 1º de outubro, o governo dos EUA autorizou o lançamento de uma ogiva nuclear para erradicar a ameaça biológica, destruindo completamente a cidade e todos os seus segredos.
-                    </p>
+                   
                 </div>
                 <div class="relative">
-                    <img src="https://i.imgur.com/5XZQZ9j.jpg" alt="Raccoon City outbreak" class="w-full rounded-lg border border-gray-700 shadow-lg">
+                    <img src="images/history.jpg" alt="Raccoon City outbreak" class="w-full rounded-lg border border-gray-700 shadow-lg">
                     <div class="absolute -bottom-4 -right-4 bg-red-900 text-white px-4 py-2 rounded-md font-bold">
                         1998
                     </div>
@@ -171,7 +194,7 @@ Entre em contato com Robin pelo canal RBS Maquetes Eletrônicas e venha fazer pa
 
             <!-- Character Card 1 - Jill -->
             <div class="character-card bg-gray-900 rounded-lg overflow-hidden border border-gray-800 transition duration-500 cursor-pointer">
-                <img src="https://static.wikia.nocookie.net/residentevil/images/8/87/JillButton.png" alt="Jill Valentine" class="w-full h-48 object-cover">
+                <img src="images/jill.png" alt="Jill Valentine" class="w-full h-48 object-cover">
                 <div class="p-4">
                     <h3 class="text-xl font-bold blood-text mb-2">JILL VALENTINE</h3>
                     <p class="text-sm text-gray-400">Membro da S.T.A.R.S. e especialista em desarmamento de bombas. Corajosa, engenhosa e determinada a impedir os horrores da Umbrella.</p>
@@ -180,7 +203,7 @@ Entre em contato com Robin pelo canal RBS Maquetes Eletrônicas e venha fazer pa
 
             <!-- Character Card 2 - Chris -->
             <div class="character-card bg-gray-900 rounded-lg overflow-hidden border border-gray-800 transition duration-500 cursor-pointer">
-                <img src="https://static.wikia.nocookie.net/residentevil/images/0/0d/ChrisButton.png" alt="Chris Redfield" class="w-full h-48 object-cover">
+                <img src="images/chris.png" alt="Chris Redfield" class="w-full h-48 object-cover">
                 <div class="p-4">
                     <h3 class="text-xl font-bold blood-text mb-2">CHRIS REDFIELD</h3>
                     <p class="text-sm text-gray-400">Veterano da S.T.A.R.S. e da BSAA. Lutou incansavelmente contra armas biológicas e conspiradores da Umbrella Corporation.</p>
@@ -189,7 +212,7 @@ Entre em contato com Robin pelo canal RBS Maquetes Eletrônicas e venha fazer pa
 
             <!-- Character Card 3 - Wesker -->
             <div class="character-card bg-gray-900 rounded-lg overflow-hidden border border-gray-800 transition duration-500 cursor-pointer">
-                <img src="https://static.wikia.nocookie.net/residentevil/images/e/ed/AlbertButton.png" alt="Albert Wesker" class="w-full h-48 object-cover">
+                <img src="images/wesker.png" alt="Albert Wesker" class="w-full h-48 object-cover">
                 <div class="p-4">
                     <h3 class="text-xl font-bold blood-text mb-2">ALBERT WESKER</h3>
                     <p class="text-sm text-gray-400">Ex-líder da S.T.A.R.S. e agente da Umbrella. Sua busca por poder absoluto o transformou em um inimigo implacável e sobre-humano.</p>
@@ -198,7 +221,7 @@ Entre em contato com Robin pelo canal RBS Maquetes Eletrônicas e venha fazer pa
 
             <!-- Character Card 4 - Leon -->
             <div class="character-card bg-gray-900 rounded-lg overflow-hidden border border-gray-800 transition duration-500 cursor-pointer">
-                <img src="https://static.wikia.nocookie.net/residentevil/images/b/b8/LeonButton.png" alt="Leon S. Kennedy" class="w-full h-48 object-cover">
+                <img src="images/leon.png" alt="Leon S. Kennedy" class="w-full h-48 object-cover">
                 <div class="p-4">
                     <h3 class="text-xl font-bold blood-text mb-2">LEON S. KENNEDY</h3>
                     <p class="text-sm text-gray-400">Novo recruta do RPD que chegou no pior dia possível. Teve que enfrentar horrores inimagináveis em seu primeiro dia de trabalho.</p>
@@ -254,62 +277,59 @@ Entre em contato com Robin pelo canal RBS Maquetes Eletrônicas e venha fazer pa
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-black">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-12 text-center blood-text">ENTRE EM CONTATO</h2>
-            <div class="max-w-2xl mx-auto">
-                <form class="space-y-6">
-                    <div>
-                        <label for="name" class="block text-sm font-medium mb-1">SEU NOME</label>
-                        <input type="text" id="name" class="w-full bg-gray-800 border border-gray-700 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-900">
-                    </div>
-                    <div>
-                        <label for="email" class="block text-sm font-medium mb-1">E-MAIL</label>
-                        <input type="email" id="email" class="w-full bg-gray-800 border border-gray-700 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-900">
-                    </div>
-                    <div>
-                        <label for="message" class="block text-sm font-medium mb-1">MENSAGEM</label>
-                        <textarea id="message" rows="4" class="w-full bg-gray-800 border border-gray-700 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-900"></textarea>
-                    </div>
-                    <button type="submit" class="w-full bg-red-900 text-white py-3 rounded-md font-bold hover:bg-red-800 transition duration-300">
-                        ENVIAR MENSAGEM
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
+<!-- Contact Section -->
+<section id="contact" class="py-16 bg-black text-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8 blood-text">CONTATO</h2>
+      <p class="text-center mb-10 max-w-xl mx-auto">
+        Interessado em ajudar no projeto ou tem alguma dúvida? Entre em contato com Robin!
+      </p>
+      <div class="max-w-2xl mx-auto bg-gray-900 p-6 rounded-lg shadow-lg">
+        <form action="mailto:seu-email@example.com" method="POST" enctype="text/plain">
+          <div class="mb-4">
+            <label class="block mb-2 text-sm">Nome</label>
+            <input type="text" name="name" class="w-full px-4 py-2 rounded bg-gray-800 text-white" required>
+          </div>
+          <div class="mb-4">
+            <label class="block mb-2 text-sm">E-mail</label>
+            <input type="email" name="email" class="w-full px-4 py-2 rounded bg-gray-800 text-white" required>
+          </div>
+          <div class="mb-4">
+            <label class="block mb-2 text-sm">Mensagem</label>
+            <textarea name="message" rows="4" class="w-full px-4 py-2 rounded bg-gray-800 text-white" required></textarea>
+          </div>
+          <button type="submit" class="bg-red-900 hover:bg-red-700 text-white px-6 py-2 rounded font-bold">
+            Enviar
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
 
     <!-- Footer -->
     <footer class="bg-gray-900 border-t border-gray-800 py-8">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-4 md:mb-0">
-                    <p class="text-sm text-gray-400">© RACCOON CITY - UM SITE NÃO OFICIAL FEITO POR FÃS</p>
-                    <p class="text-xs text-gray-500 mt-1">Resident Evil é uma marca registrada da Capcom. Este site não tem afiliação oficial.</p>
-                </div>
+                    <p class="text-sm text-gray-400"> PARA MAIS INFORMAÇÕES, ACESSE NOSSAS REDE SOCIAIS.</p>
+                
                 <div class="flex space-x-4">
-                    <a href="#" class="text-gray-400 hover:text-red-700 transition duration-300">
-                        <i class="fab fa-facebook-f text-xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-red-700 transition duration-300">
-                        <i class="fab fa-twitter text-xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-red-700 transition duration-300">
+                    <a href="https://www.instagram.com/rbsmaqueteeletronica/?hl=pt-brT%C3%A1" class="text-gray-400 hover:text-red-700 transition duration-300">
                         <i class="fab fa-instagram text-xl"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-red-700 transition duration-300">
-                        <i class="fab fa-discord text-xl"></i>
+                    <a href="https://www.youtube.com/@rbsmaqueteeletronica5724" class="text-gray-400 hover:text-red-700 transition duration-300">
+                        <i class="fab fa-youtube text-xl"></i>
                     </a>
+                </div>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Zombie Sound Button -->
-    <div class="zombie-noise bg-red-900 rounded-full w-16 h-16 flex items-center justify-center shadow-lg" onclick="playZombieSound()">
-        <i class="fas fa-skull text-2xl"></i>
-    </div>
+<!-- Zombie Sound Button -->
+<div class="zombie-noise bg-red-900 rounded-full w-14 h-14 flex items-center justify-center shadow-lg" onclick="playZombieSound()">
+    <img src="images/robin.png" alt="Zombie Sound" class="w-30 h-30 object-contain">
+</div>
 
     <script>
         // Play zombie sound
