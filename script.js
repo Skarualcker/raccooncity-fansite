@@ -9,6 +9,24 @@ if (typeof emailjs === 'undefined') {
 // ========== INICIALIZAÇÃO ==========
 document.addEventListener('DOMContentLoaded', function() {
     console.log('=== DOM CARREGADO ===');
+
+    // Botão para voltar ao formulário (configuração global)
+    document.addEventListener('click', function(e) {
+        if (e.target && e.target.id === 'back-to-form') {
+            const step1 = document.getElementById('contact-step-1');
+            const step2 = document.getElementById('contact-step-2');
+            const contactForm = document.getElementById('contactForm');
+            
+            if (step1 && step2) {
+                step2.classList.add('hidden');
+                step1.classList.remove('hidden');
+                
+                if (contactForm) {
+                    contactForm.reset();
+                }
+            }
+        }
+    });
     
     // 1. INICIALIZAR EMAILJS (se existir)
     if (typeof emailjs !== 'undefined') {
