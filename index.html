@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raccoon City | Fan Site</title>
+    
+    <!-- ADICIONE ESTA LINHA - EMAILJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-black text-gray-200 resident-theme">
+    <!-- Efeito de ruído de TV (opcional) -->
+    <div class="tv-noise"></div>
+    
+    <!-- Header with Navigation -->
+    <header class="sticky top-0 z-50 bg-black/90 backdrop-blur-sm border-b border-red-900 shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center mb-4 md:mb-0">
+                <img src="images/logo.png" alt="Umbrella Corporation Logo" class="umbrella-logo h-10 mr-3">
+                <h1 class="text-2xl md:text-3xl font-bold blood-text tracking-wider">RACCOON CITY OPEN WORLD</h1>
+            </div>
+            <nav class="flex space-x-1 md:space-x-6">
+                <a href="#home" class="nav-link px-3 py-2 text-sm md:text-base hover:text-red-700 transition duration-300">INÍCIO</a>
+                <a href="#story" class="nav-link px-3 py-2 text-sm md:text-base hover:text-red-700 transition duration-300">PROJETO</a>
+                <a href="#characters" class="nav-link px-3 py-2 text-sm md:text-base hover:text-red-700 transition duration-300">CRIADOR</a>
+                <a href="#gallery" class="nav-link px-3 py-2 text-sm md:text-base hover:text-red-700 transition duration-300">GALERIA</a>
+                <a href="#contact" class="nav-link px-3 py-2 text-sm md:text-base hover:text-red-700 transition duration-300">CONTATO</a>
+            </nav>
+                <!-- No header, após o nav -->
+            <div class="blood-drips">
+                <!-- As gotas de sangue serão geradas dinamicamente -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Áudio de fundo -->
+    <audio id="bg-music" loop hidden>
+        <source src="audio/bgm.mp3" type="audio/mpeg">
+        Seu navegador não suporta áudio HTML5.
+    </audio>
+
+    <!-- Botão de som -->
+    <div class="fixed bottom-4 right-4 z-50 flex gap-2">
+        <button id="toggle-sound" class="bg-red-900/80 hover:bg-red-700 text-white px-4 py-2 rounded shadow-lg font-bold border border-red-700">
+            <i class="fas fa-volume-up mr-2"></i>Som
+        </button>
+    </div>
+
+    <!-- Hero Section com Vídeo de Fundo -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="video-background">
+            <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-60">
+                <source src="wallpaper/MAINMENU COMP.mp4" type="video/mp4">
+                Seu navegador não suporta vídeos HTML5.
+            </video>
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/70 to-black"></div>
+        <div class="relative z-10 container mx-auto px-4 text-center">
+            <h2 class="typewriter text-3xl md:text-5xl font-bold mb-6 blood-text tracking-wider">
+                BEM-VINDO A RACCOON CITY
+            </h2>
+            <div class="resident-textbox max-w-4xl mx-auto p-6 mb-8">
+                <p class="text-lg md:text-xl leading-relaxed text-justify">
+                    Um projeto feito de fã, para fãs, inspirado no universo sombrio e envolvente da icônica franquia Resident Evil. Se você, como nós, sempre sonhou em explorar cada rua, beco e prédio dessa cidade marcada pelo terror da Umbrella Corporation, prepare-se: esse sonho está prestes a se tornar realidade.
+                    <br><br>
+                    Graças ao talento e dedicação de Robin, criador do canal <span class="blood-text font-bold">RBS Maquetes Eletrônicas</span>, você poderá vivenciar Raccoon City 24 horas antes do surto do T-Vírus, em um jogo de mundo aberto único, imersivo e cheio de tensão.
+                    <br><br>
+                    Nesta recriação detalhada e fiel, os jogadores poderão mergulhar na atmosfera decadente da cidade, descobrir segredos ocultos, desvendar conspirações e enfrentar os primeiros sinais do horror que está por vir.
+                </p>
+            </div>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#story" class="resident-btn px-6 py-3 mb-2 sm:mb-0">
+                    <i class="fas fa-file-contract mr-2"></i> SAIBA MAIS
+                </a>
+                <a href="#characters" class="resident-btn px-6 py-3 bg-red-900/50">
+                    <i class="fas fa-user mr-2"></i> CONHEÇA O CRIADOR
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section id="story" class="py-16 bg-gray-900/50 relative">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-900 to-transparent"></div>
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center blood-text tracking-wider section-title">
+                PROJETO RACCOON CITY OPEN WORLD
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="resident-textbox p-6">
+                    <p class="mb-4 text-lg">
+                        Essa experiência virtual é ambientada na icônica cidade de Raccoon City. Diferente de um jogo tradicional, o projeto será um passeio virtual, onde os fãs poderão explorar de forma imersiva diversos locais clássicos e memoráveis da franquia.
+                    </p>
+                    <p class="mb-4 text-lg">
+                        Entre esses locais, estarão incluídos a famosa Mansão Spencer, o Desert Trail Motel com seu posto de gasolina, a delegacia de polícia R.P.D., a imponente Clock Tower, o hospital da cidade, o parque municipal e a zona industrial.
+                    </p>
+                    <p class="text-lg">
+                        A ideia é proporcionar aos fãs a oportunidade de caminhar por esses cenários como se realmente estivessem dentro do universo de Resident Evil, revivendo a atmosfera sombria e envolvente que marcou a história da série.
+                    </p>
+                    <div class="mt-6 flex justify-center">
+                        <a href="#gallery" class="resident-btn-sm">
+                            <i class="fas fa-images mr-2"></i> VER GALERIA
+                        </a>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="images/cidade.jpg" alt="Raccoon City outbreak" class="w-full rounded-lg border-2 border-red-900 shadow-2xl resident-image">
+                    <div class="absolute -bottom-4 -right-4 bg-red-900/90 text-white p-3 rounded-lg border border-red-700">
+                        <p class="text-sm font-bold"><i class="fas fa-exclamation-triangle mr-2"></i> AMBIENTE 100% IMERSIVO</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Characters Section -->
+    <section id="characters" class="py-16 bg-black relative">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-900 to-transparent"></div>
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center blood-text tracking-wider section-title">
+                CRIADOR
+            </h2>
+            
+            <div class="flex justify-center">
+                <div class="character-card bg-gray-900 rounded-lg overflow-hidden border-2 border-gray-800 transition-all duration-500 cursor-pointer w-full max-w-2xl hover:border-red-900 hover:shadow-2xl hover:shadow-red-900/30">
+                    <div class="relative">
+                        <img src="images/robin.png" alt="Robin Oliver" class="w-full h-64 object-cover">
+                        <div class="absolute top-0 left-0 bg-red-900/90 text-white px-4 py-2 font-bold">
+                            <i class="fas fa-id-card mr-2"></i> DESENVOLVEDOR
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold blood-text mb-4 tracking-wider">ROBIN OLIVER</h3>
+                        <div class="resident-textbox p-4 mb-4">
+                            <p class="text-gray-300">
+                                Sou o Robin Oliver e atuo com arquitetura e engenharia, focando em projetos e level design. Participei do desenvolvimento do Resident Evil 3 Remake Fangame e contribuí com modelagens para o filme The Keepers Diary, dirigido por Andrew Saullo, em parceria com Charlie Kraslavsky, que interpretou Chris Redfield no Resident Evil 1 clássico.
+                            </p>
+                        </div>
+                        <div class="resident-textbox p-4 bg-gray-800/50">
+                            <p class="text-gray-300 font-bold">
+                                <i class="fas fa-tools mr-2 text-red-600"></i> Atualmente, estou trabalhando em um passeio virtual completo por Raccoon City e também desenvolvendo um jogo em mundo aberto ambientado na cidade.
+                            </p>
+                        </div>
+                        <div class="mt-6 flex justify-center space-x-4">
+                            <a href="https://www.youtube.com/@rbsmaqueteeletronica5724" target="_blank" class="resident-btn-sm">
+                                <i class="fab fa-youtube mr-2"></i> YouTube
+                            </a>
+                            <a href="https://www.instagram.com/rbsmaqueteeletronica/?hl=pt-br" target="_blank" class="resident-btn-sm">
+                                <i class="fab fa-instagram mr-2"></i> Instagram
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section (antiga Downloads) -->
+    <section id="gallery" class="py-16 bg-gray-900/50 relative">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-900 to-transparent"></div>
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center blood-text tracking-wider section-title">
+                GALERIA
+            </h2>
+            <div class="grid grid-cols-1 gap-6">
+                <!-- Gallery Card -->
+                <div class="bg-black rounded-lg border border-red-900 p-6 resident-textbox">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-camera-retro text-4xl blood-text mb-3"></i>
+                        <h3 class="text-2xl font-bold mb-2">WALLPAPERS E VÍDEOS</h3>
+                        <p class="text-gray-400">Coleção de wallpapers e vídeos em alta resolução de Raccoon City</p>
+                    </div>
+                    <div class="gallery grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <!-- Wallpapers -->
+                        <img src="wallpaper/mansao007_000000.png" alt="Mansão Spencer" class="gallery-item">
+                        <img src="wallpaper/mansao1.png" alt="Mansão Spencer Interior" class="gallery-item">
+                        <img src="wallpaper/mansao2.png" alt="Mansão Spencer Escada" class="gallery-item">
+                        <img src="wallpaper/galpao.png" alt="Galpão Industrial" class="gallery-item">
+                        <img src="wallpaper/GARAGEM 06_000000.jpeg" alt="Garagem" class="gallery-item">
+                        <img src="wallpaper/galpao2.png" alt="Galpão 2" class="gallery-item">
+                        <img src="wallpaper/clock 06_000000.png" alt="Clock Tower" class="gallery-item">
+                        <img src="wallpaper/006a_000000.jpeg" alt="Bonde" class="gallery-item">
+                        <img src="wallpaper/clock 01_000000.png" alt="Clock Tower Relógio" class="gallery-item">
+                        
+                        <!-- Vídeos -->
+                        <div class="video-container">
+                            <video controls class="gallery-video">
+                                <source src="wallpaper/mansao 07.mp4" type="video/mp4">
+                                Seu navegador não suporta o elemento de vídeo.
+                            </video>
+                            <p class="text-center text-sm text-gray-400 mt-2">Mansão Spencer</p>
+                        </div>
+                        <div class="video-container">
+                            <video controls class="gallery-video">
+                                <source src="wallpaper/FIM02.mp4" type="video/mp4">
+                                Seu navegador não suporta o elemento de vídeo.
+                            </video>
+                            <p class="text-center text-sm text-gray-400 mt-2">Trailer do Projeto</p>
+                        </div>
+                        <div class="video-container">
+                            <video controls class="gallery-video">
+                                <source src="wallpaper/MAINMENU COMP.mp4" type="video/mp4">
+                                Seu navegador não suporta o elemento de vídeo.
+                            </video>
+                            <p class="text-center text-sm text-gray-400 mt-2">Menu Principal</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+<section id="contact" class="py-16 bg-gray-900/50 text-white relative">
+    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-900 to-transparent"></div>
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-8 blood-text tracking-wider section-title">CONTATO</h2>
+        <p class="text-center mb-10 max-w-xl mx-auto text-lg">
+            Interessado em ajudar no projeto ou tem alguma dúvida? Entre em contato!
+        </p>
+        <div class="max-w-2xl mx-auto resident-textbox p-8">
+            <!-- FORMULÁRIO CORRIGIDO - REMOVA O ACTION -->
+            <form id="contactForm">
+                <div class="mb-6">
+                    <label class="block mb-3 text-lg">
+                        <i class="fas fa-user mr-2 text-red-600"></i> Nome
+                    </label>
+                    <input type="text" id="user_name" name="name" class="resident-input w-full px-4 py-3 rounded" required>
+                </div>
+                <div class="mb-6">
+                    <label class="block mb-3 text-lg">
+                        <i class="fas fa-envelope mr-2 text-red-600"></i> E-mail
+                    </label>
+                    <input type="email" id="user_email" name="email" class="resident-input w-full px-4 py-3 rounded" required>
+                </div>
+                <div class="mb-8">
+                    <label class="block mb-3 text-lg">
+                        <i class="fas fa-comment mr-2 text-red-600"></i> Mensagem
+                    </label>
+                    <textarea id="message" name="message" rows="5" class="resident-input w-full px-4 py-3 rounded" required></textarea>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="resident-btn px-8 py-3 text-lg">
+                        <i class="fas fa-paper-plane mr-2"></i> ENVIAR MENSAGEM
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer class="bg-black/90 border-t border-red-900 py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0 text-center md:text-left">
+                    <p class="text-lg blood-text font-bold mb-2">RBS MAQUETE ELETRÔNICA</p>
+                    <p class="text-sm text-gray-400 max-w-md">
+                        SIGA-NOS NAS REDES E NÃO PERCA NENHUMA ATUALIZAÇÃO DESSE PESADELO DIGITAL.
+                    </p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://www.instagram.com/rbsmaqueteeletronica/?hl=pt-br" 
+                       target="_blank"
+                       class="social-icon hover:text-red-600 transition duration-300">
+                        <i class="fab fa-instagram text-2xl"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@rbsmaqueteeletronica5724" 
+                       target="_blank"
+                       class="social-icon hover:text-red-600 transition duration-300">
+                        <i class="fab fa-youtube text-2xl"></i>
+                    </a>
+                    <a href="mailto:robson_livre_@hotmail.com" 
+                       class="social-icon hover:text-blue-400 transition duration-300">
+                        <i class="fas fa-envelope text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-gray-800 text-center">
+                <p class="text-gray-500 text-sm">
+                    © 2024 Raccoon City Open World Project. Este é um projeto de fãs não oficial.<br>
+                    Resident Evil é propriedade da Capcom. "Itchy. Tasty."
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+ 
+    <!-- NO FINAL DO BODY -->
+<div id="simple-lightbox">
+    <div class="lightbox-container">
+        <span class="close-lightbox">&times;</span>
+        <img id="lightbox-img" src="" alt="">
+        <div id="lightbox-text"></div>
+    </div>
+</div>   
+    
+</body>
+</html>
