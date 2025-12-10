@@ -473,3 +473,64 @@ img[src*="wallpaper/"]:hover {
     pointer-events: none;
     z-index: 100;
 }
+
+/* Transições entre etapas */
+#contact-step-1, #contact-step-2 {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#contact-step-1.hidden, #contact-step-2.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+}
+
+#contact-step-1:not(.hidden), #contact-step-2:not(.hidden) {
+    opacity: 1;
+    transform: translateY(0);
+    position: relative;
+}
+
+/* Animação do check */
+.fa-check-circle {
+    animation: checkPop 0.5s ease-out;
+}
+
+@keyframes checkPop {
+    0% { transform: scale(0); }
+    70% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Efeito no botão de download */
+#download-btn-main {
+    animation: pulseDownload 2s infinite;
+}
+
+@keyframes pulseDownload {
+    0% { box-shadow: 0 0 0 0 rgba(139, 0, 0, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(139, 0, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(139, 0, 0, 0); }
+}
+
+/* Lista numerada estilizada */
+ol {
+    list-style: none;
+    counter-reset: step-counter;
+    padding-left: 0;
+}
+
+ol li {
+    counter-increment: step-counter;
+    margin-bottom: 1rem;
+}
+
+ol li span:first-child {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    margin-right: 0.75rem;
+}

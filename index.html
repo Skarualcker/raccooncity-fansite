@@ -217,41 +217,164 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+ <!-- Contact + Download Section -->
 <section id="contact" class="py-16 bg-gray-900/50 text-white relative">
     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-900 to-transparent"></div>
     <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-8 blood-text tracking-wider section-title">CONTATO</h2>
-        <p class="text-center mb-10 max-w-xl mx-auto text-lg">
-            Interessado em ajudar no projeto ou tem alguma dúvida? Entre em contato!
-        </p>
-        <div class="max-w-2xl mx-auto resident-textbox p-8">
-            <!-- FORMULÁRIO CORRIGIDO - REMOVA O ACTION -->
-            <form id="contactForm">
-                <div class="mb-6">
-                    <label class="block mb-3 text-lg">
-                        <i class="fas fa-user mr-2 text-red-600"></i> Nome
-                    </label>
-                    <input type="text" id="user_name" name="name" class="resident-input w-full px-4 py-3 rounded" required>
+        
+        <!-- ETAPA 1: Formulário de Contato (inicial) -->
+        <div id="contact-step-1" class="max-w-2xl mx-auto">
+            <p class="text-center mb-10 max-w-xl mx-auto text-lg">
+                Envie uma mensagem para saber mais sobre o projeto e receber o link de download
+            </p>
+            
+            <div class="resident-textbox p-8">
+                <form id="contactForm">
+                    <div class="mb-6">
+                        <label class="block mb-3 text-lg">
+                            <i class="fas fa-user mr-2 text-red-600"></i> Nome
+                        </label>
+                        <input type="text" id="user_name" name="name" 
+                               class="resident-input w-full px-4 py-3 rounded" 
+                               placeholder="Seu nome completo" required>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block mb-3 text-lg">
+                            <i class="fas fa-envelope mr-2 text-red-600"></i> E-mail
+                        </label>
+                        <input type="email" id="user_email" name="email" 
+                               class="resident-input w-full px-4 py-3 rounded" 
+                               placeholder="seu@melhor.email" required>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <label class="block mb-3 text-lg">
+                            <i class="fas fa-comment mr-2 text-red-600"></i> Mensagem
+                        </label>
+                        <textarea id="message" name="message" rows="5" 
+                                  class="resident-input w-full px-4 py-3 rounded" 
+                                  placeholder="Conte sobre seu interesse no projeto..." 
+                                  required></textarea>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="submit" class="resident-btn px-8 py-3 text-lg w-full">
+                            <i class="fas fa-paper-plane mr-2"></i> ENVIAR MENSAGEM E RECEBER DOWNLOAD
+                        </button>
+                        <p class="text-gray-400 text-sm mt-3">
+                            <i class="fas fa-lock mr-1"></i> Após enviar, você receberá o link de download
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- ETAPA 2: Confirmação + Download (escondida inicialmente) -->
+        <div id="contact-step-2" class="hidden max-w-2xl mx-auto">
+            <div class="text-center mb-10">
+                <div class="inline-block bg-green-900/20 p-4 rounded-full mb-6">
+                    <i class="fas fa-check-circle text-5xl text-green-500"></i>
                 </div>
-                <div class="mb-6">
-                    <label class="block mb-3 text-lg">
-                        <i class="fas fa-envelope mr-2 text-red-600"></i> E-mail
-                    </label>
-                    <input type="email" id="user_email" name="email" class="resident-input w-full px-4 py-3 rounded" required>
-                </div>
-                <div class="mb-8">
-                    <label class="block mb-3 text-lg">
-                        <i class="fas fa-comment mr-2 text-red-600"></i> Mensagem
-                    </label>
-                    <textarea id="message" name="message" rows="5" class="resident-input w-full px-4 py-3 rounded" required></textarea>
-                </div>
+                <h3 class="text-2xl font-bold text-green-300 mb-4">MENSAGEM ENVIADA COM SUCESSO!</h3>
+                <p class="text-xl text-gray-300 mb-2">Obrigado pelo seu interesse, <span id="user-greeting" class="blood-text font-bold"></span>!</p>
+                <p class="text-gray-400">Sua mensagem foi enviada para o Robin. Agora você pode baixar o projeto:</p>
+            </div>
+            
+            <div class="resident-textbox p-8 border-2 border-green-900/30">
                 <div class="text-center">
-                    <button type="submit" class="resident-btn px-8 py-3 text-lg">
-                        <i class="fas fa-paper-plane mr-2"></i> ENVIAR MENSAGEM
-                    </button>
+                    <div class="inline-block bg-red-900/20 p-4 rounded-full mb-6">
+                        <i class="fab fa-unreal text-4xl blood-text"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4">RACCOON CITY - PROJETO UNREAL</h4>
+                    <p class="text-gray-400 mb-8">Projeto fonte do Unreal Engine 5</p>
+                    
+                    <!-- Botão de Download PRINCIPAL -->
+                    <a href="https://drive.google.com/file/d/1C4R4p_a31Hh23iFTQu1nJHHoGi-HKsWy/view" 
+                       target="_blank"
+                       id="download-btn-main"
+                       class="resident-btn px-10 py-4 text-xl inline-block mb-6 transform hover:scale-105 transition-transform">
+                        <i class="fab fa-unreal mr-3"></i> BAIXAR PROJETO UNREAL
+                    </a>
+                    
+                    <!-- Informações do Projeto -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                        <div class="bg-gray-900/50 p-3 rounded-lg">
+                            <i class="fab fa-unreal text-red-500 mb-2"></i>
+                            <p class="text-sm font-bold">Unreal Engine 5</p>
+                            <p class="text-xs text-gray-400">Projeto fonte</p>
+                        </div>
+                        <div class="bg-gray-900/50 p-3 rounded-lg">
+                            <i class="fas fa-hdd text-red-500 mb-2"></i>
+                            <p class="text-sm font-bold">20GB</p>
+                            <p class="text-xs text-gray-400">Tamanho estimado</p>
+                        </div>
+                        <div class="bg-gray-900/50 p-3 rounded-lg">
+                            <i class="fas fa-desktop text-red-500 mb-2"></i>
+                            <p class="text-sm font-bold">Windows 10/11</p>
+                            <p class="text-xs text-gray-400">Sistema</p>
+                        </div>
+                        <div class="bg-gray-900/50 p-3 rounded-lg">
+                            <i class="fas fa-code text-red-500 mb-2"></i>
+                            <p class="text-sm font-bold">Arquivo .uproject</p>
+                            <p class="text-xs text-gray-400">Abrir no Editor</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Instruções UNREAL -->
+                    <div class="text-left bg-gray-900/30 p-6 rounded-lg mb-6">
+                        <h5 class="text-lg font-bold mb-4">
+                            <i class="fas fa-info-circle mr-2 text-red-500"></i> COMO USAR:
+                        </h5>
+                        <ol class="space-y-3 text-gray-300">
+                            <li class="flex items-start">
+                                <span class="bg-red-900 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">1</span>
+                                <span><strong>Baixe</strong> o arquivo .zip do Google Drive</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="bg-red-900 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">2</span>
+                                <span><strong>Extraia</strong> o arquivo zip</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="bg-red-900 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">3</span>
+                                <span><strong>Tenha Unreal Engine 5</strong> instalado (Epic Games Launcher)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="bg-red-900 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">4</span>
+                                <span><strong>Abra o arquivo .uproject</strong> com o Unreal Editor</span>
+                            </li>
+                        </ol>
+                    </div>
+                    
+                    <!-- Aviso importante -->
+                    <div class="mt-6 p-4 bg-yellow-900/20 border border-yellow-700 rounded-lg mb-6">
+                        <p class="text-sm text-yellow-300">
+                            <i class="fas fa-exclamation-triangle mr-2"></i>
+                            <strong>Atenção:</strong> Este é um <strong>projeto fonte do Unreal Engine</strong>. 
+                            É necessário ter o Unreal Engine 5 instalado para abrir.
+                        </p>
+                    </div>
+                    
+                    <!-- Opções extras -->
+                    <div class="space-y-4">
+                        <button id="copy-link-btn" class="resident-btn-sm w-full">
+                            <i class="fas fa-copy mr-2"></i> COPIAR LINK DO DOWNLOAD
+                        </button>
+                        <button id="back-to-form" class="resident-btn-sm w-full bg-gray-700 hover:bg-gray-600">
+                            <i class="fas fa-edit mr-2"></i> ENVIAR OUTRA MENSAGEM
+                        </button>
+                    </div>
                 </div>
-            </form>
+            </div>
+            
+            <!-- Mensagem adicional -->
+            <div class="mt-8 text-center">
+                <p class="text-gray-400">
+                    <i class="fas fa-envelope mr-2"></i>
+                    O Robin entrará em contato pelo email <span id="user-email-display" class="text-red-300"></span>
+                </p>
+            </div>
         </div>
     </div>
 </section>
@@ -286,7 +409,7 @@
             <div class="mt-8 pt-6 border-t border-gray-800 text-center">
                 <p class="text-gray-500 text-sm">
                     © 2024 Raccoon City Open World Project. Este é um projeto de fãs não oficial.<br>
-                    Resident Evil é propriedade da Capcom. "Itchy. Tasty."
+                    Resident Evil é propriedade da Capcom.
                 </p>
             </div>
         </div>

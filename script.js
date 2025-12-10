@@ -18,110 +18,173 @@ document.addEventListener('DOMContentLoaded', function() {
         console.warn('⚠️ EmailJS não disponível. Usando fallback para mailto.');
     }
     
-    // 2. CONFIGURAR FORMULÁRIO DE CONTATO
-    function initContactForm() {
-        const contactForm = document.getElementById('contactForm');
+// 2. CONFIGURAR FORMULÁRIO DE CONTATO (NOVA VERSÃO)
+function initContactForm() {
+    const contactForm = document.getElementById('contactForm');
+    const step1 = document.getElementById('contact-step-1');
+    const step2 = document.getElementById('contact-step-2');
+    
+    if (!contactForm) {
+        console.error('❌ Formulário #contactForm não encontrado!');
+        return;
+    }
+    
+    console.log('✅ Formulário encontrado:', contactForm);
+    
+    // LINK DO DOWNLOAD (SEU GOOGLE DRIVE)
+    const DOWNLOAD_URL = "https://drive.google.com/file/d/1C4R4p_a31Hh23iFTQu1nJHHoGi-HKsWy/view";
+    
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
         
-        if (!contactForm) {
-            console.error('❌ Formulário #contactForm não encontrado!');
+        // Coletar dados
+        const userName = document.getElementById('user_name').value;
+        const userEmail = document.getElementById('user_email').value;
+        const userMessage = document.getElementById('message').value;
+        
+        if (!userName || !userEmail || !userMessage) {
+            alert('Por favor, preencha todos os campos.');
             return;
         }
         
-        console.log('✅ Formulário encontrado:', contactForm);
+        // Botão de enviar
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
         
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            console.log('📝 Formulário submetido');
+        // Mostrar "enviando"
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> ENVIANDO...';
+        submitBtn.disabled = true;
+        
+        // Dados para EmailJS
+        const templateParams = {
+            name: userName,
+            email: userEmail,
+            message: userMessage,
+            date: new Date().toLocaleString('pt-BR'),
+            download_request: "SIM - Solicitou download do projeto Unreal"
+        };
+        
+        console.log('📤 Enviando mensagem + download:', templateParams);
+        
+        // ENVIAR VIA EMAILJS
+        if (typeof emailjs !== 'undefined') {
+            emailjs.init("1JKERJLs6yLjO62a4");
             
-            // Coletar dados
-            const name = document.getElementById('user_name').value;
-            const email = document.getElementById('user_email').value;
-            const message = document.getElementById('message').value;
-            
-            if (!name || !email || !message) {
-                alert('⚠️ Preencha todos os campos!');
-                return;
-            }
-            
-            const templateParams = {
-                name: name,
-                email: email,
-                message: message,
-                date: new Date().toLocaleString('pt-BR')
-            };
-            
-            console.log('📤 Dados para envio:', templateParams);
-            
-            // Botão de enviar
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            
-            // Mostrar "enviando"
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> ENVIANDO...';
-            submitBtn.disabled = true;
-            
-            // FUNÇÃO FALLBACK (mailto)
-            function useMailtoFallback() {
-                const subject = `Contato Site Raccoon City: ${name}`;
-                const body = `Nome: ${name}\nEmail: ${email}\nData: ${templateParams.date}\n\nMensagem:\n${message}`;
+            emailjs.send(
+                'service_re6hevq',
+                'template_ifzyysf',
+                templateParams
+            )
+            .then(function(response) {
+                console.log('✅ Email enviado com sucesso!');
                 
-                console.log('🔄 Usando fallback mailto');
-                window.location.href = `mailto:robson_livre_@hotmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                // SALVAR NO LOCALSTORAGE
+                saveUserData(userName, userEmail);
                 
-                // Restaurar botão após delay
-                setTimeout(() => {
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                }, 1000);
-            }
+                // MOSTRAR ETAPA 2 (DOWNLOAD)
+                showDownloadStep(userName, userEmail);
+                
+            }).catch(function(error) {
+                console.error('❌ Erro no EmailJS:', error);
+                
+                // Mesmo se falhar o email, mostrar download
+                saveUserData(userName, userEmail);
+                showDownloadStep(userName, userEmail);
+                
+                alert('⚠️ Mensagem pode não ter sido enviada, mas você já pode baixar o projeto!');
+            });
             
-            // TENTAR EMAILJS PRIMEIRO
-            if (typeof emailjs !== 'undefined' && emailjs.send) {
-                console.log('🚀 Tentando EmailJS...');
-                
-                emailjs.send(
-                    'service_re6hevq',
-                    'template_ifzyysf',
-                    templateParams
-                )
-                .then(function(response) {
-                    console.log('✅ EmailJS: Sucesso!', response);
-                    
-                    // Mensagem de sucesso
-                    alert('✅ Mensagem enviada com sucesso! O Robin entrará em contato.');
-                    
-                    // Limpar formulário
-                    contactForm.reset();
-                    
-                    // Botão de sucesso
-                    submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i> ENVIADO!';
-                    submitBtn.style.background = '#10b981';
-                    
+        } else {
+            // Se EmailJS não carregar
+            saveUserData(userName, userEmail);
+            showDownloadStep(userName, userEmail);
+        }
+        
+        // Restaurar botão
+        setTimeout(() => {
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        }, 3000);
+    });
+    
+    // FUNÇÃO PARA MOSTRAR ETAPA DE DOWNLOAD
+    function showDownloadStep(name, email) {
+        // Esconder etapa 1
+        step1.classList.add('hidden');
+        
+        // Mostrar etapa 2
+        step2.classList.remove('hidden');
+        
+        // Preencher dados do usuário
+        document.getElementById('user-greeting').textContent = name;
+        document.getElementById('user-email-display').textContent = email;
+        
+        // Configurar botão de copiar link
+        document.getElementById('copy-link-btn').addEventListener('click', function() {
+            navigator.clipboard.writeText(DOWNLOAD_URL)
+                .then(() => {
+                    const original = this.innerHTML;
+                    this.innerHTML = '<i class="fas fa-check mr-2"></i> LINK COPIADO!';
                     setTimeout(() => {
-                        submitBtn.innerHTML = originalText;
-                        submitBtn.disabled = false;
-                        submitBtn.style.background = '';
+                        this.innerHTML = original;
                     }, 2000);
-                    
-                }).catch(function(error) {
-                    console.error('❌ EmailJS falhou:', error);
-                    
-                    // Perguntar se quer fallback
-                    if (confirm('Sistema automático indisponível. Abrir email manualmente?')) {
-                        useMailtoFallback();
-                    } else {
-                        submitBtn.innerHTML = originalText;
-                        submitBtn.disabled = false;
-                    }
+                })
+                .catch(err => {
+                    console.error('Erro ao copiar:', err);
+                    alert('Não foi possível copiar. O link é: ' + DOWNLOAD_URL);
                 });
-                
-            } else {
-                // EmailJS não disponível, usar fallback direto
-                console.log('🔄 EmailJS não disponível, usando fallback...');
-                useMailtoFallback();
-            }
         });
+        
+        // Botão para voltar ao formulário
+        document.getElementById('back-to-form').addEventListener('click', function() {
+            step2.classList.add('hidden');
+            step1.classList.remove('hidden');
+            contactForm.reset();
+        });
+        
+        // Rolar suavemente
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        
+        console.log('✅ Download liberado para:', name);
     }
+    
+    // SALVAR DADOS NO LOCALSTORAGE
+    function saveUserData(name, email) {
+        localStorage.setItem('raccoon_user_name', name);
+        localStorage.setItem('raccoon_user_email', email);
+        localStorage.setItem('raccoon_download_access', 'granted');
+        localStorage.setItem('raccoon_last_access', new Date().toISOString());
+    }
+    
+    // VERIFICAR SE JÁ TEM ACESSO
+    function checkExistingAccess() {
+        if (localStorage.getItem('raccoon_download_access') === 'granted') {
+            const name = localStorage.getItem('raccoon_user_name') || 'Jogador';
+            const email = localStorage.getItem('raccoon_user_email') || '';
+            
+            // Já tem acesso, mostrar direto a etapa 2
+            step1.classList.add('hidden');
+            step2.classList.remove('hidden');
+            
+            document.getElementById('user-greeting').textContent = name;
+            document.getElementById('user-email-display').textContent = email;
+            
+            // Mudar mensagem para quem já tem acesso
+            const title = document.querySelector('#contact-step-2 h3');
+            const subtitle = document.querySelector('#contact-step-2 p.text-xl');
+            const description = document.querySelector('#contact-step-2 p.text-gray-400');
+            
+            if (title) title.textContent = 'BEM-VINDO DE VOLTA!';
+            if (subtitle) subtitle.textContent = `Que bom te ver novamente, ${name}!`;
+            if (description) description.textContent = 'Você já tem acesso ao download do projeto:';
+                
+            console.log('👋 Usuário retornando:', name);
+        }
+    }
+    
+    // Executar verificação ao carregar
+    checkExistingAccess();
+}
     
     // 3. SEU CÓDIGO EXISTENTE (com algumas correções)
     
