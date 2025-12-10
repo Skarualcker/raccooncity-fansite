@@ -130,12 +130,14 @@
             
             <div class="flex justify-center">
                 <div class="character-card bg-gray-900 rounded-lg overflow-hidden border-2 border-gray-800 transition-all duration-500 cursor-pointer w-full max-w-2xl hover:border-red-900 hover:shadow-2xl hover:shadow-red-900/30">
-                    <div class="relative">
-                        <img src="images/robin.png" alt="Robin Oliver" class="w-full h-64 object-cover">
-                        <div class="absolute top-0 left-0 bg-red-900/90 text-white px-4 py-2 font-bold">
-                            <i class="fas fa-id-card mr-2"></i> DESENVOLVEDOR
-                        </div>
-                    </div>
+                    <div class="relative flex flex-col items-center">
+    <div class="w-full max-w-md"> <!-- ou ajuste a largura máxima -->
+        <img src="images/robin.png" alt="Robin Oliver" class="w-full h-96 object-cover">
+        <div class="absolute top-0 left-0 bg-red-900/90 text-white px-4 py-2 font-bold">
+            <i class="fas fa-id-card mr-2"></i> DESENVOLVEDOR
+        </div>
+    </div>
+</div>
                     <div class="p-6">
                         <h3 class="text-2xl font-bold blood-text mb-4 tracking-wider">ROBIN OLIVER</h3>
                         <div class="resident-textbox p-4 mb-4">
@@ -217,7 +219,7 @@
         </div>
     </section>
 
- <!-- Contact + Download Section -->
+<!-- Contact + Download Section -->
 <section id="contact" class="py-16 bg-gray-900/50 text-white relative">
     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-900 to-transparent"></div>
     <div class="container mx-auto px-4">
@@ -255,7 +257,7 @@
                         </label>
                         <textarea id="message" name="message" rows="5" 
                                   class="resident-input w-full px-4 py-3 rounded" 
-                                  placeholder="Conte sobre seu interesse no projeto..." 
+                                  placeholder="Conte sobre seu interesse no projeto, se tem experiência com programação, modelagem 3D, etc..." 
                                   required></textarea>
                     </div>
                     
@@ -279,81 +281,60 @@
                 </div>
                 <h3 class="text-2xl font-bold text-green-300 mb-4">MENSAGEM ENVIADA COM SUCESSO!</h3>
                 <p class="text-xl text-gray-300 mb-2">Obrigado pelo seu interesse, <span id="user-greeting" class="blood-text font-bold"></span>!</p>
-                <p class="text-gray-400">Sua mensagem foi enviada para o Robin. Agora você pode baixar o projeto:</p>
+                <p class="text-gray-400">Sua mensagem foi enviada para o Robin. Agora você pode baixar o jogo:</p>
             </div>
             
             <div class="resident-textbox p-8 border-2 border-green-900/30">
                 <div class="text-center">
                     <div class="inline-block bg-red-900/20 p-4 rounded-full mb-6">
-                        <i class="fab fa-unreal text-4xl blood-text"></i>
+                        <i class="fas fa-download text-4xl blood-text"></i>
                     </div>
-                    <h4 class="text-2xl font-bold mb-4">RACCOON CITY - PROJETO UNREAL</h4>
-                    <p class="text-gray-400 mb-8">Projeto fonte do Unreal Engine 5</p>
+                    <h4 class="text-2xl font-bold mb-4">RESIDENT EVIL REMAKE FAN GAME</h4>
+                    <p class="text-gray-400 mb-8">Versão Alpha</p>
                     
                     <!-- Botão de Download PRINCIPAL -->
                     <a href="https://drive.google.com/file/d/1C4R4p_a31Hh23iFTQu1nJHHoGi-HKsWy/view" 
                        target="_blank"
                        id="download-btn-main"
                        class="resident-btn px-10 py-4 text-xl inline-block mb-6 transform hover:scale-105 transition-transform">
-                        <i class="fab fa-unreal mr-3"></i> BAIXAR PROJETO UNREAL
+                        <i class="fas fa-download mr-3"></i> BAIXAR JOGO AGORA
                     </a>
                     
-                    <!-- Informações do Projeto -->
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                        <div class="bg-gray-900/50 p-3 rounded-lg">
-                            <i class="fab fa-unreal text-red-500 mb-2"></i>
-                            <p class="text-sm font-bold">Unreal Engine 5</p>
-                            <p class="text-xs text-gray-400">Projeto fonte</p>
-                        </div>
+                    <!-- Detalhes Técnicos -->
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
                         <div class="bg-gray-900/50 p-3 rounded-lg">
                             <i class="fas fa-hdd text-red-500 mb-2"></i>
-                            <p class="text-sm font-bold">20GB</p>
-                            <p class="text-xs text-gray-400">Tamanho estimado</p>
+                            <p class="text-sm">20GB</p>
                         </div>
                         <div class="bg-gray-900/50 p-3 rounded-lg">
                             <i class="fas fa-desktop text-red-500 mb-2"></i>
-                            <p class="text-sm font-bold">Windows 10/11</p>
-                            <p class="text-xs text-gray-400">Sistema</p>
+                            <p class="text-sm">Windows 10/11</p>
                         </div>
                         <div class="bg-gray-900/50 p-3 rounded-lg">
-                            <i class="fas fa-code text-red-500 mb-2"></i>
-                            <p class="text-sm font-bold">Arquivo .uproject</p>
-                            <p class="text-xs text-gray-400">Abrir no Editor</p>
+                            <i class="fas fa-code-branch text-red-500 mb-2"></i>
+                            <p class="text-sm">Alpha 0.1</p>
                         </div>
                     </div>
                     
-                    <!-- Instruções UNREAL -->
+                    <!-- Instruções -->
                     <div class="text-left bg-gray-900/30 p-6 rounded-lg mb-6">
                         <h5 class="text-lg font-bold mb-4">
-                            <i class="fas fa-info-circle mr-2 text-red-500"></i> COMO USAR:
+                            <i class="fas fa-info-circle mr-2 text-red-500"></i> COMO INSTALAR:
                         </h5>
                         <ol class="space-y-3 text-gray-300">
                             <li class="flex items-start">
                                 <span class="bg-red-900 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">1</span>
-                                <span><strong>Baixe</strong> o arquivo .zip do Google Drive</span>
+                                <span>Clique em "BAIXAR JOGO AGORA"</span>
                             </li>
                             <li class="flex items-start">
                                 <span class="bg-red-900 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">2</span>
-                                <span><strong>Extraia</strong> o arquivo zip</span>
+                                <span>No Google Drive, clique no ícone de download</span>
                             </li>
                             <li class="flex items-start">
                                 <span class="bg-red-900 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">3</span>
-                                <span><strong>Tenha Unreal Engine 5</strong> instalado (Epic Games Launcher)</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="bg-red-900 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-1 flex-shrink-0">4</span>
-                                <span><strong>Abra o arquivo .uproject</strong> com o Unreal Editor</span>
+                                <span>Extraia o arquivo ZIP e execute "Re3FanR.exe"</span>
                             </li>
                         </ol>
-                    </div>
-                    
-                    <!-- Aviso importante -->
-                    <div class="mt-6 p-4 bg-yellow-900/20 border border-yellow-700 rounded-lg mb-6">
-                        <p class="text-sm text-yellow-300">
-                            <i class="fas fa-exclamation-triangle mr-2"></i>
-                            <strong>Atenção:</strong> Este é um <strong>projeto fonte do Unreal Engine</strong>. 
-                            É necessário ter o Unreal Engine 5 instalado para abrir.
-                        </p>
                     </div>
                     
                     <!-- Opções extras -->

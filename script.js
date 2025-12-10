@@ -18,20 +18,15 @@ document.addEventListener('DOMContentLoaded', function() {
         console.warn('⚠️ EmailJS não disponível. Usando fallback para mailto.');
     }
     
-// 2. CONFIGURAR FORMULÁRIO DE CONTATO (NOVA VERSÃO)
-function initContactForm() {
+    // 2. CONFIGURAR FORMULÁRIO DE CONTATO (NOVA VERSÃO - SUBSTITUA DAQUI)
+    function initContactForm() {
     const contactForm = document.getElementById('contactForm');
     const step1 = document.getElementById('contact-step-1');
     const step2 = document.getElementById('contact-step-2');
     
-    if (!contactForm) {
-        console.error('❌ Formulário #contactForm não encontrado!');
-        return;
-    }
+    if (!contactForm) return;
     
-    console.log('✅ Formulário encontrado:', contactForm);
-    
-    // LINK DO DOWNLOAD (SEU GOOGLE DRIVE)
+    // LINK DO DOWNLOAD
     const DOWNLOAD_URL = "https://drive.google.com/file/d/1C4R4p_a31Hh23iFTQu1nJHHoGi-HKsWy/view";
     
     contactForm.addEventListener('submit', function(e) {
@@ -61,7 +56,7 @@ function initContactForm() {
             email: userEmail,
             message: userMessage,
             date: new Date().toLocaleString('pt-BR'),
-            download_request: "SIM - Solicitou download do projeto Unreal"
+            download_request: "SIM - Solicitou download"
         };
         
         console.log('📤 Enviando mensagem + download:', templateParams);
@@ -78,7 +73,7 @@ function initContactForm() {
             .then(function(response) {
                 console.log('✅ Email enviado com sucesso!');
                 
-                // SALVAR NO LOCALSTORAGE
+                // SALVAR NO LOCALSTORAGE (para lembrar)
                 saveUserData(userName, userEmail);
                 
                 // MOSTRAR ETAPA 2 (DOWNLOAD)
@@ -91,7 +86,7 @@ function initContactForm() {
                 saveUserData(userName, userEmail);
                 showDownloadStep(userName, userEmail);
                 
-                alert('⚠️ Mensagem pode não ter sido enviada, mas você já pode baixar o projeto!');
+                alert('⚠️ Mensagem pode não ter sido enviada, mas você já pode baixar o jogo!');
             });
             
         } else {
@@ -100,7 +95,7 @@ function initContactForm() {
             showDownloadStep(userName, userEmail);
         }
         
-        // Restaurar botão
+        // Restaurar botão (só por segurança)
         setTimeout(() => {
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
@@ -142,7 +137,7 @@ function initContactForm() {
             contactForm.reset();
         });
         
-        // Rolar suavemente
+        // Rolar suavemente para a seção
         document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
         
         console.log('✅ Download liberado para:', name);
@@ -156,7 +151,7 @@ function initContactForm() {
         localStorage.setItem('raccoon_last_access', new Date().toISOString());
     }
     
-    // VERIFICAR SE JÁ TEM ACESSO
+    // VERIFICAR SE JÁ TEM ACESSO (ao carregar a página)
     function checkExistingAccess() {
         if (localStorage.getItem('raccoon_download_access') === 'granted') {
             const name = localStorage.getItem('raccoon_user_name') || 'Jogador';
@@ -170,13 +165,11 @@ function initContactForm() {
             document.getElementById('user-email-display').textContent = email;
             
             // Mudar mensagem para quem já tem acesso
-            const title = document.querySelector('#contact-step-2 h3');
-            const subtitle = document.querySelector('#contact-step-2 p.text-xl');
-            const description = document.querySelector('#contact-step-2 p.text-gray-400');
-            
-            if (title) title.textContent = 'BEM-VINDO DE VOLTA!';
-            if (subtitle) subtitle.textContent = `Que bom te ver novamente, ${name}!`;
-            if (description) description.textContent = 'Você já tem acesso ao download do projeto:';
+            document.querySelector('#contact-step-2 h3').textContent = 'BEM-VINDO DE VOLTA!';
+            document.querySelector('#contact-step-2 p.text-xl').textContent = 
+                `Que bom te ver novamente, ${name}!`;
+            document.querySelector('#contact-step-2 p.text-gray-400').textContent = 
+                'Você já tem acesso ao download do jogo:';
                 
             console.log('👋 Usuário retornando:', name);
         }
