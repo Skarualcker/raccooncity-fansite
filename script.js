@@ -426,3 +426,15 @@ window.testEmailJS = function() {
 // Log inicial
 console.log('Script.js carregado com sucesso!');
 console.log('Para testar EmailJS, digite no console: testEmailJS()');
+
+function openTeaserVideo() {
+    const wrapper = document.querySelector(".teaser-wrapper");
+
+    wrapper.innerHTML = `
+        <video src="wallpaper/TEASER.mp4" 
+               controls 
+               autoplay 
+               class="w-full rounded-lg">
+        </video>
+    `;
+}

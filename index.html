@@ -110,12 +110,31 @@
                         </a>
                     </div>
                 </div>
-                <div class="relative">
-                    <img src="images/cidade.jpg" alt="Raccoon City outbreak" class="w-full rounded-lg border-2 border-red-900 shadow-2xl resident-image">
-                    <div class="absolute -bottom-4 -right-4 bg-red-900/90 text-white p-3 rounded-lg border border-red-700">
-                        <p class="text-sm font-bold"><i class="fas fa-exclamation-triangle mr-2"></i> AMBIENTE 100% IMERSIVO</p>
-                    </div>
-                </div>
+<div class="rounded-lg border-2 border-red-900 shadow-2xl relative">
+
+    <!-- BADGE SUPERIOR -->
+    <div class="absolute -top-4 -left-4 bg-red-900/90 text-white p-3 rounded-lg border border-red-700 z-20">
+        <p class="text-sm font-bold"><i class="fas fa-play-circle mr-2"></i> TEASER NÃO OFICIAL</p>
+    </div>
+
+    <!-- BADGE INFERIOR -->
+    <div class="absolute -bottom-4 -right-4 bg-red-900/90 text-white p-3 rounded-lg border border-red-700 z-20">
+        <p class="text-sm font-bold"><i class="fas fa-exclamation-triangle mr-2"></i> AMBIENTE 100% IMERSIVO</p>
+    </div>
+
+    <!-- ÁREA QUE DE FATO CRESCE -->
+    <div class="teaser-wrapper" onclick="openTeaserVideo()">
+
+        <img src="images/cidade2.jpeg" 
+             alt="Raccoon City outbreak" 
+             class="w-full rounded-lg"
+             id="teaser-image">
+
+        <div class="teaser-play-icon">
+            <i class="fas fa-play-circle text-white text-7xl drop-shadow-2xl"></i>
+        </div>
+    </div>
+</div>
             </div>
         </div>
     </section>
@@ -228,7 +247,7 @@
         <!-- ETAPA 1: Formulário de Contato (inicial) -->
         <div id="contact-step-1" class="max-w-2xl mx-auto">
             <p class="text-center mb-10 max-w-xl mx-auto text-lg">
-                Envie uma mensagem para saber mais sobre o projeto e receber o link de download
+                Envie uma mensagem para saber mais sobre o projeto e receber o link de download do Resident Evil Remake Fangame
             </p>
             
             <div class="resident-textbox p-8">
@@ -266,7 +285,7 @@
                             <i class="fas fa-paper-plane mr-2"></i> ENVIAR MENSAGEM E RECEBER DOWNLOAD
                         </button>
                         <p class="text-gray-400 text-sm mt-3">
-                            <i class="fas fa-lock mr-1"></i> Após enviar, você receberá o link de download
+                            <i class="fas fa-lock mr-1"></i> Após enviar, você receberá o link para download
                         </p>
                     </div>
                 </form>
